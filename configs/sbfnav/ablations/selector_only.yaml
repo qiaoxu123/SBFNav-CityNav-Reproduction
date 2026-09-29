@@ -1,0 +1,9 @@
+_base_: ../main.yaml
+experiment:
+  name: sbfnav_ablation_selector_only_uniform_grid
+proposal:
+  mode: uniform_grid
+selector:
+  selection_mode: selector
+loss:
+  field_weight: 0.0

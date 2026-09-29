@@ -1,0 +1,7 @@
+_base_: ../main.yaml
+experiment:
+  name: sbfnav_ablation_sbf_only
+selector:
+  selection_mode: sbf_top1
+loss:
+  rank_weight: 0.0

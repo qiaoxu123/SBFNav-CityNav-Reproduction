@@ -1,0 +1,5 @@
+_base_: ../main.yaml
+experiment:
+  name: sbfnav_ablation_no_landmark_candidates
+proposal:
+  add_landmark_candidates: false

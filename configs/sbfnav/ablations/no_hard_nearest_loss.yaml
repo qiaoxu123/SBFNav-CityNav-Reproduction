@@ -1,0 +1,5 @@
+_base_: ../main.yaml
+experiment:
+  name: sbfnav_ablation_no_hard_nearest_loss
+loss:
+  hard_weight: 0.0
