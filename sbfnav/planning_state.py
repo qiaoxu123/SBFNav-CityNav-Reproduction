@@ -10,7 +10,7 @@ import cv2
 import numpy as np
 import rasterio
 
-from multiagent.mapdata import GROUND_LEVEL
+from sbfnav.mapdata import GROUND_LEVEL
 
 from .coordinates import MapTransform
 from .dataset import CityNavRecord, CityReferCatalog, Landmark
