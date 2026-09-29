@@ -1,0 +1,59 @@
+{
+  "train": [
+    "/home/ubuntu5/miniconda3/envs/SBFNav/bin/python",
+    "/home/ubuntu5/Workspace/hett-runs/sbfnav/main_e20_benchmark2d_resume_e7_s0_20260927/source/scripts/train_sbfnav.py",
+    "--config",
+    "/home/ubuntu5/Workspace/hett-runs/sbfnav/main_e20_benchmark2d_resume_e7_s0_20260927/source/configs/sbfnav/main.yaml",
+    "--output-dir",
+    "/home/ubuntu5/Workspace/hett-runs/sbfnav/main_e20_benchmark2d_resume_e7_s0_20260927/training",
+    "--save-every",
+    "5",
+    "--epochs",
+    "20",
+    "--resume",
+    "/home/ubuntu5/Workspace/hett-runs/sbfnav/main_e20_benchmark2d_resume_e5_s0_20260927/training/checkpoints/last.pt",
+    "--resume-optimizer",
+    "--override",
+    "data.root=/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data"
+  ],
+  "evaluations": [
+    [
+      "/home/ubuntu5/miniconda3/envs/SBFNav/bin/python",
+      "/home/ubuntu5/Workspace/hett-runs/sbfnav/main_e20_benchmark2d_resume_e7_s0_20260927/source/scripts/evaluate_sbfnav.py",
+      "--config",
+      "/home/ubuntu5/Workspace/hett-runs/sbfnav/main_e20_benchmark2d_resume_e7_s0_20260927/source/configs/sbfnav/main.yaml",
+      "--checkpoint",
+      "/home/ubuntu5/Workspace/hett-runs/sbfnav/main_e20_benchmark2d_resume_e7_s0_20260927/training/checkpoints/best_val_unseen.pt",
+      "--split",
+      "val_seen",
+      "--output-dir",
+      "/home/ubuntu5/Workspace/hett-runs/sbfnav/main_e20_benchmark2d_resume_e7_s0_20260927/evaluation/val_seen",
+      "--override",
+      "data.root=/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data"
+    ],
+    [
+      "/home/ubuntu5/miniconda3/envs/SBFNav/bin/python",
+      "/home/ubuntu5/Workspace/hett-runs/sbfnav/main_e20_benchmark2d_resume_e7_s0_20260927/source/scripts/evaluate_sbfnav.py",
+      "--config",
+      "/home/ubuntu5/Workspace/hett-runs/sbfnav/main_e20_benchmark2d_resume_e7_s0_20260927/source/configs/sbfnav/main.yaml",
+      "--checkpoint",
+      "/home/ubuntu5/Workspace/hett-runs/sbfnav/main_e20_benchmark2d_resume_e7_s0_20260927/training/checkpoints/best_val_unseen.pt",
+      "--split",
+      "val_unseen",
+      "--output-dir",
+      "/home/ubuntu5/Workspace/hett-runs/sbfnav/main_e20_benchmark2d_resume_e7_s0_20260927/evaluation/val_unseen",
+      "--override",
+      "data.root=/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data"
+    ]
+  ],
+  "candidate_analyses": [],
+  "environment_overrides": {
+    "CUDA_VISIBLE_DEVICES": "0",
+    "PYTHONUNBUFFERED": "1",
+    "PYTHONPATH": "/home/ubuntu5/Workspace/hett-runs/sbfnav/main_e20_benchmark2d_resume_e7_s0_20260927/source",
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1",
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "SBFNAV_GIT_COMMIT": "a66f05b914c18651174ff89f3ac9d2ca46a70f5d"
+  }
+}
