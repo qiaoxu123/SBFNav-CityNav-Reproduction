@@ -110,13 +110,13 @@ def main() -> None:
     run.mkdir(parents=True, exist_ok=False)
     snapshot = run / "source"
     snapshot.mkdir()
-    for directory in ("sbfnav", "scripts", "configs", "docs", "multiagent"):
+    for directory in ("sbfnav", "scripts", "configs", "docs"):
         shutil.copytree(
             root / directory,
             snapshot / directory,
             ignore=shutil.ignore_patterns("__pycache__", "*.pyc", "checkpoints", "runs"),
         )
-    for name in ("README.md", "SINGLE_GPU.md", "requirements.txt", "AGENTS.md"):
+    for name in ("README.md", "requirements.txt"):
         if (root / name).exists():
             shutil.copy2(root / name, snapshot / name)
     for name in ("data", "weights"):
