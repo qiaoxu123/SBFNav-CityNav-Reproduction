@@ -12,9 +12,9 @@ for reproducing the current epoch-7 inspection:
   resumed formal run. It is intentionally labelled partial and must not be
   interpreted as its final result.
 - `epoch7_full_validation/`: complete Val-Seen and Val-Unseen metrics,
-  one-record-per-episode prediction JSONL files, logs, and provenance.
-- `epoch7_candidate_analysis/`: complete Val-Seen and Val-Unseen candidate
-  prediction JSONL files, oracle-coverage metrics, logs, and provenance.
+  logs, configuration snapshots, and provenance.
+- `epoch7_candidate_analysis/`: Val-Seen and Val-Unseen oracle-coverage
+  metrics, logs, configuration snapshots, and provenance.
 - `epoch7_case_visualizations/`: five representative successes and five
   failures from each validation split, plus selection manifests.
 - `e7_valunseen_closed_loop_diagnostic_256/`: complete per-step predictions
@@ -23,7 +23,10 @@ for reproducing the current epoch-7 inspection:
   checksum file itself.
 
 Model checkpoints, learned weights, feature caches, source snapshots, datasets,
-and other large/redundant files are deliberately excluded. Absolute data and
+and other large/redundant files are deliberately excluded. During the split into
+this standalone repository, five multi-megabyte per-episode prediction JSONL
+files were also omitted; their aggregate metrics, logs, provenance, and selected
+visualizations are retained. Absolute data and
 run paths found in provenance files identify the machine inputs used; those
 inputs are not part of this repository. Test-Unseen predictions are absent and
 the tracked effective configurations keep `allow_test_unseen: false`.
