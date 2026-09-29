@@ -1,0 +1,2 @@
+{"time": "2026-09-27T09:32:33+0800", "event": "started", "phase": "training", "pid": 3776939}
+{"time": "2026-09-27T12:59:52+0800", "event": "exited", "phase": "training", "exit_code": -15}

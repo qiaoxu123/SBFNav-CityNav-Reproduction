@@ -1,0 +1,2 @@
+{"time": "2026-09-27T09:32:49+0800", "event": "frozen_text_precomputed", "entries": 22041, "seconds": 11.227339744567871, "disabled_trainable": false}
+{"time": "2026-09-27T09:32:49+0800", "event": "training_started", "device": "NVIDIA GeForce RTX 5090", "records": 21878, "samples": 87512, "start_epoch": 0, "target_epochs": 20}

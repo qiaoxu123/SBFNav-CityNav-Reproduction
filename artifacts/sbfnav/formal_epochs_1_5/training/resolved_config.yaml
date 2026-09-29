@@ -1,0 +1,107 @@
+experiment:
+  name: sbfnav_main_revised
+  paper_based_reimplementation: true
+  seed: 0
+data:
+  root: /home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data
+  version: processed_citynav
+  train_split: train_seen
+  validation_splits:
+  - val_seen
+  - val_unseen
+  allow_test_unseen: false
+  samples_per_episode: 4
+model:
+  input_channels: 9
+  canvas_size: 224
+  field_size: 28
+  hidden_dim: 256
+  attention_heads: 8
+  dropout: 0.1
+  use_cross_attention: true
+  pooled_text_only: false
+  gate_init: 0.0
+  siglip_name: google/siglip-base-patch16-224
+  freeze_siglip: true
+  local_files_only: true
+state:
+  max_height_above_ground_m: 100.0
+  trajectory_radius_m: 2.0
+proposal:
+  mode: field
+  top_k: 16
+  nms_kernel: 3
+  dedup_radius_m: 2.0
+  add_landmark_candidates: true
+selector:
+  selection_mode: selector
+  crop_extent_m: 100.0
+  crop_size: 224
+  hidden_dim: 256
+  layers: 2
+  attention_heads: 8
+  dropout: 0.1
+  use_geometry: true
+  use_landmark_text: true
+  use_field_score: false
+  max_landmarks: 8
+loss:
+  field_weight: 1.0
+  gaussian_sigma_m: 20.0
+  list_temperature_m: 20.0
+  good_radius_m: 20.0
+  bad_radius_m: 40.0
+  score_margin: 1.0
+  rank_weight: 1.0
+  margin_weight: 0.2
+  hard_weight: 0.5
+  altitude_weight: 0.1
+  progress_weight: 0.1
+altitude:
+  min_above_ground_m: 10.0
+  max_above_ground_m: 100.0
+training:
+  epochs: 20
+  batch_size: 16
+  gradient_accumulation: 1
+  effective_batch_size: 16
+  optimizer: adamw
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  warmup_fraction: 0.05
+  scheduler: cosine
+  precision: bf16
+  gradient_clip_norm: 1.0
+  workers: 0
+  save_last: true
+  validate_every: 1
+  validation_max_episodes: 128
+  vision_batch_size: 128
+  vision_cache_entries: 2000000
+  text_precompute_batch_size: 256
+  select_checkpoint_by:
+  - val_unseen_sr
+  - val_unseen_spl
+  - val_unseen_ne
+navigation:
+  horizon: 20
+  success_distance_m: 20.0
+  horizontal_step_m: 50.0
+  vertical_step_m: 10.0
+  stagnation_steps: 5
+  use_progress_for_stopping: false
+evaluation:
+  batch_size: 1
+  candidate_thresholds_m:
+  - 10.0
+  - 20.0
+  - 40.0
+  candidate_ks:
+  - 1
+  - 5
+  - 16
+  difficulties:
+  - easy
+  - medium
+  - hard
+_config_path: /home/ubuntu5/Workspace/hett-runs/sbfnav/main_e20_greedynms_r3_s0_20260927/source/configs/sbfnav/main.yaml
