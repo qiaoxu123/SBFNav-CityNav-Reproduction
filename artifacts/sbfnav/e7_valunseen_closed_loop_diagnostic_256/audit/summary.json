@@ -1,0 +1,61 @@
+{
+  "predictions": "/home/ubuntu5/Workspace/hett-runs/sbfnav/e7_valunseen_stepdiag_256/predictions.jsonl",
+  "episodes": 256,
+  "success_distance_m": 20.0,
+  "low_spl_threshold": 0.5,
+  "switch_distance_m": 20.0,
+  "step_diagnostics_available": true,
+  "categories": {
+    "A_success_high_spl": {
+      "episodes": 24,
+      "fraction": 0.09375,
+      "mean_spl": 0.701224586372443,
+      "mean_path_ratio": 1.4741549507637028,
+      "mean_min_goal_distance_m": 9.964116041525944,
+      "mean_final_goal_distance_m": 12.840547571913726,
+      "left_success_region_fraction": 0.5833333333333334,
+      "mean_candidate_switch_count": 3.5416666666666665,
+      "mean_selector_margin": 0.529806858588083
+    },
+    "B_success_low_spl": {
+      "episodes": 4,
+      "fraction": 0.015625,
+      "mean_spl": 0.3635003500096387,
+      "mean_path_ratio": 2.770526505538141,
+      "mean_min_goal_distance_m": 8.38827168383024,
+      "mean_final_goal_distance_m": 10.674812487703777,
+      "left_success_region_fraction": 0.75,
+      "mean_candidate_switch_count": 1.75,
+      "mean_selector_margin": 0.5313962934331762
+    },
+    "C_oracle_only_final_failure": {
+      "episodes": 42,
+      "fraction": 0.1640625,
+      "mean_spl": 0.0,
+      "mean_path_ratio": 2.014845798486401,
+      "mean_min_goal_distance_m": 13.196840747199442,
+      "mean_final_goal_distance_m": 46.736612844541995,
+      "left_success_region_fraction": 1.0,
+      "mean_candidate_switch_count": 3.642857142857143,
+      "mean_selector_margin": 0.5916681733452415
+    },
+    "D_never_reached": {
+      "episodes": 186,
+      "fraction": 0.7265625,
+      "mean_spl": 0.0,
+      "mean_path_ratio": 1.562350403242137,
+      "mean_min_goal_distance_m": 57.294213234842616,
+      "mean_final_goal_distance_m": 73.73702036623122,
+      "left_success_region_fraction": 0.0,
+      "mean_candidate_switch_count": 2.6129032258064515,
+      "mean_selector_margin": 0.6756173637517935
+    }
+  },
+  "oracle_only_diagnostics": {
+    "episodes": 42,
+    "left_success_region_after_first_hit": 42,
+    "mean_departure_beyond_success_radius_m": 26.736612844541995,
+    "mean_first_success_step": 5.380952380952381,
+    "mean_candidate_switch_count": 3.642857142857143
+  }
+}

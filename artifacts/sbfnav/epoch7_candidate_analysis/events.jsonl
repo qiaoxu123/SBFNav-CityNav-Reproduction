@@ -1,0 +1,4 @@
+{"time": "2026-09-27T15:24:24+0800", "event": "started", "phase": "candidate_analysis_val_seen", "pid": 3855354}
+{"time": "2026-09-27T15:25:24+0800", "event": "exited", "phase": "candidate_analysis_val_seen", "exit_code": 0}
+{"time": "2026-09-27T15:25:24+0800", "event": "started", "phase": "candidate_analysis_val_unseen", "pid": 3855681}
+{"time": "2026-09-27T15:25:54+0800", "event": "exited", "phase": "candidate_analysis_val_unseen", "exit_code": 0}
