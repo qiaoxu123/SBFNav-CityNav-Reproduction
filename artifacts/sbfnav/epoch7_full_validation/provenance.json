@@ -1,0 +1,546 @@
+{
+  "started": "2026-09-27T14:35:25+0800",
+  "paper_based_reimplementation": true,
+  "git_head": "5be2330fff56c077ba6bf4391ed0d9a092ad4fb1",
+  "phase": "eval",
+  "source_sha256": {
+    "SINGLE_GPU.md": "94e7c90e8973ac0388f5e59915372fe3e916f11918636197b0634b8090b58930",
+    "requirements.txt": "b8a6b547fb0cb18c750fb49c1365626a3827652dd044f995ced3bfb5c6d85308",
+    "README.md": "9d5a795800bda3d06bf8d80c825cb0a7c66494ec615cd2896906a29bd00dd8eb",
+    "sbfnav/model_factory.py": "79b99f345003a1a59d344884c1e9e6d6646c525145b461c972e40d03a6e39b46",
+    "sbfnav/runtime.py": "14ed50ff677790ef8e4782ac3fb0e9d1cf3f21b3cf550d18cc8fde7e3b896ba8",
+    "sbfnav/training_data.py": "87e493151d876b23cc97005c696e3add1bb075357165f4d2aa7486bb06234311",
+    "sbfnav/config.py": "2d6855e7c0465d0c08ccc638c6d579e37c20d3c8c68a76f31b856d0a2c44a3bb",
+    "sbfnav/field_targets.py": "98597c69c1ab629b7329f0d1b30fcce049cce87a7f8c18ad2c08f6e4d9a521ff",
+    "sbfnav/dataset.py": "928ccdab5b3c6405b710d2464a8ad2dbae6ebe05a32a2ece60f747cb8f8b235a",
+    "sbfnav/checkpointing.py": "668f07bb242a97aae7512ca38b08e29944a1848dc5e1bef8aa3caaf1cf280599",
+    "sbfnav/planning_state.py": "161d68df2fa61ae030079ca4855598423c1b533e805eb7aebacc38a7cd6abecf",
+    "sbfnav/validation.py": "cb90531ec8b53cbf858e3cc04ba1b80e35461af4936f7e8a956a777dfe53011f",
+    "sbfnav/visualization.py": "98147b5f44037b53ae773790bbbe3968616c0df901187928177910e7ada9eaa2",
+    "sbfnav/navigation.py": "507ee66ae27d95d3896f49456543d7e624ccf69e5b14c7541d62b3e7ec6b0728",
+    "sbfnav/candidate_proposal.py": "b26289bd587f2db7e524271fc5d8a841f2b2441042b273036c748a8c3751c00c",
+    "sbfnav/losses.py": "8e98349fa30c3f45733b676a5ee5b571be1bb7c0e21fa9aa3db0d8aec2f6756f",
+    "sbfnav/__init__.py": "c1fbe3790814fe6d0d3f919e81198dfad344d925351aed902d87087cccc5a2e2",
+    "sbfnav/metrics.py": "59cf13ec72a796046fb288951cdccce4840d12918d3373458bc97ea5d6d3611f",
+    "sbfnav/coordinates.py": "537319565f4d76664bd6fadf20efb58d6b271efc666f119be10d9b9a65a9131c",
+    "sbfnav/models/altitude_head.py": "c9ad1fe3aff185b8f47d4fcadfe56b95cc3c6846531ebbdaa947b18b054e4ee1",
+    "sbfnav/models/selector.py": "3bb84deebeb629ff30e1838a8849a7ed85e17d602d79b334c1a70bdc4e37fb40",
+    "sbfnav/models/belief_field.py": "66b00a67ec1ad452fae4e97c2625bad2500909a28f90976e7a9445a511aea73e",
+    "sbfnav/models/language_encoder.py": "ffc6a5955c5a913f091f7bf9b6a5c4ba769f7816433e2aee0c5024a94469fc62",
+    "sbfnav/models/residual_cnn.py": "292c17511885a4d8fde93b571ac359efa2171b419eb306bbc7c352834e2a328b",
+    "sbfnav/models/__init__.py": "ac25a7637acfd307dd304b3b28007c79b902dc2b6fa9616e205fcef864a39087",
+    "sbfnav/models/sbfnav.py": "6d04770ad92b22b04a4c4961b6d1d04fae8d5bcbc62bfebfd4459afd007103e8",
+    "multiagent/train.sh": "87eaf053f8ed8ba151343b29b68489ce8c75fe33f0ee3904e3944f27c930f86d",
+    "multiagent/parser.py": "23308dfe730867edf0d6a5380d17a24e124b78889864a45f10b102d4c8638243",
+    "multiagent/env.py": "99a47b77096146f76cd722e4e98c607e5c708236f35a1fd30453507541e95843",
+    "multiagent/actions.py": "826415a3c2ed0aa133eb66679b0ecf88f79206e59a0f4853fd813986d04bdf0a",
+    "multiagent/eval.sh": "61daea56628474cb96a69a3532a8326e62a763ed3cd4fe3c37ab55bf1fc0e193",
+    "multiagent/main.py": "de02dd0ee90a8271ef1c30ee5af37514434ff183fc273f6a5e49d76c40d4d866",
+    "multiagent/defaultpaths.py": "e4c8eeec4e4be1facf15e12139f1db474deeabc174b2cedda7c91ebd40fcd3fe",
+    "multiagent/mapdata.py": "279b1c38ced8914ae381d9509e8a5961a53bc564ccc1084d61f34bcdf4b0d3b1",
+    "multiagent/check_single_gpu.py": "2fb0182c01c541a54d62f90b56eafdabdd1c57e8c65236a373907105f8b46488",
+    "multiagent/cityreferobject.py": "b77e17ce42f4ebdb54113e30b232b35353b18fed695ff4fe3190557ed4fc9524",
+    "multiagent/space.py": "0b7bde0d91f117e924609cec195c152c3187315c10fc2f27c63d98940abd0ca2",
+    "multiagent/trajectory.py": "f827f9cacb31d3a5f849fb01832b1ad05da9a78610b3882bc70f1c8ae11190f9",
+    "multiagent/agent.py": "9154f6126e06dbaba14dcae422768e3aca6b33419eb79d9488f197f1f1b6168e",
+    "multiagent/logger.py": "2fe4152e2fc6007eeaa817945955a0a1343fd908a35a2c1fa82ec6c5edab8940",
+    "multiagent/teacher/trajectory.py": "de655e172253b1ca7b6ad0a36d0f3d2bd6cc97ab60d5f854f59bbe6088fd5110",
+    "multiagent/teacher/algorithm/lookahead.py": "f6678c878e978204804fd502c5ebb25009304c88d3a6515923b7d38bdb3c35d3",
+    "multiagent/utils/misc.py": "d98d6660111e5ebb59ea2c3c37a12b4f56177d8972f9e396be161a2be316cb62",
+    "multiagent/utils/distributed.py": "dc2eb7a28b0df8bcbd8999ed876911258a2887f2ee6eef458d1ef28614792d71",
+    "multiagent/utils/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "multiagent/utils/logger.py": "e839acd14fa887767ec47f63bfcd4245d8ace29ecd2299086f7fe66df44a86fc",
+    "multiagent/utils/pad.py": "3b438c50e43347edc6b695c26a29eedb9016d47571f4163adebc4f2847ec4d9f",
+    "multiagent/models/goal_predictor.py": "5967255e4c7010bb32eff5be5c127af51b6c3e24f057e5b8d8879990c44c6a54",
+    "multiagent/models/vln_model.py": "dfe968f5381b9ddeb8f09c750171aa43d131e3613ba45a8b70366e06a21859e5",
+    "multiagent/models/dark_net.py": "99fdd0f119569389b13a572dd84c5ff670dca8a6f8c42bcf5a73a7ae638524cf",
+    "multiagent/models/model_util.py": "ae5d58881643457f3bf52ac8c0ccb8822f0bd3008679dc24089c4ca6928a2513",
+    "multiagent/models/encodings.py": "4efb146406644d751c37c32c8bbf4478ad89c17ef2513b4a76f7a877dea03db6",
+    "multiagent/models/enc_vl.py": "73ee0b442ac5ff9737d5c27fa995677b72f092ce0612aa6eff48868c3900c3a5",
+    "multiagent/models/enc_visual.py": "abdafdcf0a69e39df68732498ed96a8bd2e4ed5ac01d36e16ada92f935287608",
+    "multiagent/models/CLIP.py": "0fd0f47930fbf3354be60040ccd2e6ee33822a109b659796be5c71aaed26f6e6",
+    "multiagent/models/ET_haa.py": "a338ef276a18cc4b0f52072d7426bcedfe9f4ae18160a381e89a5b9297133e50",
+    "multiagent/models/ddppo/resenet_encoders.py": "ca778e0cbe111df474997a8d52031f276c7d913c48f8883dc2c12461e5ba4deb",
+    "multiagent/models/ddppo/resnet.py": "9c5ec61e787aefbc60f3a7901657ee022d29f50d2a4a6eb15534d8e1dcf06e70",
+    "multiagent/dataset/episode.py": "e375fbec4d64a00e5c91dd412e242ca4a0d921feae3c2d7f0b70f74299ac10d4",
+    "multiagent/dataset/mturk_trajectory.py": "77dbfaed41655d94f8b22d8ff69a566c808144df31b29efa1f6541ea257ac8db",
+    "multiagent/dataset/generate.py": "e260ea7575d3cc0d6b70f4b8fa52f50b6947d8e0dd11402aac195a9c59112b57",
+    "multiagent/maps/landmark_map.py": "398685850c590baa6c4427dab493aa04361aa701f7665af1931744c7188064f5",
+    "multiagent/maps/landmark_nav_map.py": "611a7ff023a80fceb42e9bde64b8b7eb3c925efb1799e0b33b11e41a12d8deee",
+    "multiagent/maps/map.py": "fe7633a619a90ba10f86b4e81cd8ccea68584bc29a5693043be86b229be9b04f",
+    "multiagent/maps/tracking_map.py": "efeb7846296fc61fecfd7fa6349d59c706cfff986c89fcc2d7abf96542a9c940",
+    "multiagent/scripts/run.sh": "c40708bd339c94c8765ad28b616ca1f3e089594d55cc850c92253db4a994ebfd",
+    "multiagent/observation/cropclient.py": "9f081809780394eab242dba34e5d783c991d8d4aad1cad1491f4a74fa475c338",
+    "multiagent/observation/airsimclient.py": "438f42fcbf315c345f8d2dbde717cfc9aaf20db05ccca6c73419b87eb4f519dc",
+    "docs/sbfnav_results.md": "df9301623a4d9a325b771041fa25a44171733f1a130b18fd943dac38d3946b9d",
+    "docs/sbfnav_assumptions.md": "4865dd77f23f52aa27572ce8b81301ab06d2947cd6a73d2be53c9dec8767ffee",
+    "docs/sbfnav_reproduction.md": "1cd09f6d4b9b77a876856315e4ad3a900b33d9d0eb59e8bd1a413b38afb2a017",
+    "configs/sbfnav/debug.yaml": "9b1fb483e2d136c5ea84645c926ee21d76bb57c77c4a0419f4932630ce04eb65",
+    "configs/sbfnav/main.yaml": "600434ea7e451111f226b4cf23d204df7e56969d58c8e1d945558d34b98eea17",
+    "configs/sbfnav/ablations/no_geometry.yaml": "34fefe3664a0f40e3ab0abd7dc728a7bd82dff5505d9bd7d2c36e26cfbb297ba",
+    "configs/sbfnav/ablations/pooled_text.yaml": "64139786ef19c050f3062af17a3414632a1ebe4602872cfa75680e9e60be665c",
+    "configs/sbfnav/ablations/no_ranking_loss.yaml": "ac3ba88bc139d732a800534ee43e9d3d550db18c00cf48c55a68c34051e8078a",
+    "configs/sbfnav/ablations/selector_only.yaml": "cdec2793e9f37867082e66cfc08a65bb8cf85d9c07dfbc5e32f45a2fd7905bba",
+    "configs/sbfnav/ablations/sbf_only.yaml": "31201e5c313c5f84a5e74036792e4ed250207dce6062be6fd1a823f9077f6cb9",
+    "configs/sbfnav/ablations/no_cross_attention.yaml": "b68afdb12c347ba7daa6ceb820c762d31005928ccb902c4c4d5b6e7a02fc0745",
+    "configs/sbfnav/ablations/no_hard_nearest_loss.yaml": "069e7f6577132a5d3797332e69bb96eba2c5e1ae6e6717dd6a25134f0c44df82",
+    "configs/sbfnav/ablations/no_landmark_text.yaml": "64f366616c80b457c28595aa97bae4fb70c39d5fb9588866e714d8af92a00a89",
+    "configs/sbfnav/ablations/k32.yaml": "05a1d9045ef82b14e10abaf1b7f141027384534d1613ef1d03a8c503172b4b4a",
+    "configs/sbfnav/ablations/no_landmark_candidates.yaml": "cb6df03ab04dd0a8827680223fa2b88ec243b68cd92fb0bff4c27d57a8c39f8a",
+    "configs/sbfnav/ablations/k16.yaml": "cdde1cb4a4b761edf5de7cd031307b95c7ab2f38c661ffa76475d502646f7472",
+    "configs/sbfnav/ablations/no_altitude_auxiliary_loss.yaml": "b9a83e7e5eee5288a2743d9c1815cd1b09bbac07afc9a87633106baface472cc",
+    "configs/sbfnav/ablations/k8.yaml": "4734242e049846d842adb0de72c3da1da57dd05734bdf5ef7b09d74aa191bf94",
+    "configs/sbfnav/ablations/k4.yaml": "70ff590ee5c79c81ffd83bafabaabbbb8bb72dda9fa18b7833bdc42359cf38fc",
+    "scripts/eval_vlnce.sh": "d1a6ee6085a804a0ad22ecddae80e6717bb5c5cb84a3ed556a7ea8eb7db2cc7f",
+    "scripts/visualize_sbf_predictions.py": "feeba78055da98a992d3ca07fea726bbf93cadd33ba0c3f5e5c85a40e87dfb00",
+    "scripts/train_goal_predictor.sh": "3235a69216c7ccf400a35eb992c37b836ffb24672c001ca8d0a03a72eb54e2b0",
+    "scripts/eval_goal_predictor.sh": "d003e3b8af0af23591e154e5926350a2dcac2a3f0dba546d7d3a7ab7978b986f",
+    "scripts/analyze_sbf_candidates.py": "f89568820c18526cff30aad8026dbf1db4e3ed9e603bc065a203ca948f27ae7a",
+    "scripts/supervise_experiment.py": "d36e768076ad28f8c7719b184bbf939ab0ea4f5bd3435af98eb14c2dab840474",
+    "scripts/download_weights.sh": "d4d08c2582f0e34407ee7352076c5bf1f06efba1117e8b31fec083c5b00e3e97",
+    "scripts/supervise_baseline.py": "2912af00c9a28f5a830ee94555209e94e547821db15b4d931460894b2dbc391e",
+    "scripts/train_vlnce.sh": "c01ff2f130ec7f499b0d21f756ab992909fc140b8290d3313da29e13de2eb078",
+    "scripts/evaluate_sbfnav.py": "b5589faef4ab24784ff52b354d66176cd8cb92a1a9c9b25ddadb14ae1522ef3c",
+    "scripts/freeze_sbfnav_test.py": "7e501309d94dcbc8108e99f5ff830620faf1c1daf4dfbc2e223f92048d08b436",
+    "scripts/train_sbfnav.py": "539b556aa967e02becd5b622093e75080e3352f157fc82a4afe922e210a73c03",
+    "scripts/rasterize.sh": "af7bdc83cb3487524be69a9fb8e0c47ebe0a2ef9020ce3272fd606118ed65d8b",
+    "scripts/visualize_sbf_episodes.py": "c1269b519708683e7051d89a69bd709839d3852bd81d4e05f03cd008c38fc1f6",
+    "scripts/download_data.sh": "d6d75f79a2ec64871638aca089e670832edad03d7ae3cdb30ef2b359f9059b7e"
+  },
+  "input_sha256": [
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/cityrefer/objects.json",
+      "bytes": 22984808,
+      "sha256": "f71ef8117f34434b77b9f608a6232a2efd48553db0d922974d91e17babd7bf74"
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/cityrefer/processed_descriptions.json",
+      "bytes": 4387773,
+      "sha256": "8b12575039e6fff6d70d5c616ff4f9ac5693a230d4ffe6716aabfa9afaac410b"
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/processed_citynav/citynav_train_seen.json",
+      "bytes": 187891667,
+      "sha256": "c24a16ddaab820d32bb6ce44a373bc2e2b8f6d88e8d08fdff9ba165f190388b2"
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/processed_citynav/citynav_val_seen.json",
+      "bytes": 50453758,
+      "sha256": "df3b5a27a6c6d05e90fd3c6618e2676a3ed5fa3214dc5594485e206e9ea37a06"
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/processed_citynav/citynav_val_unseen.json",
+      "bytes": 18195342,
+      "sha256": "73720c81ad9ca38dd5f54dbe0d992c57072ad0bf85182e15d92252998977cfac"
+    }
+  ],
+  "raster_inventory": [
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_0.png",
+      "bytes": 6413144,
+      "mtime_ns": 1785672274553188167
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_0.tif",
+      "bytes": 39468530,
+      "mtime_ns": 1785672273866526927
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_1.png",
+      "bytes": 22738004,
+      "mtime_ns": 1785672297416994555
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_1.tif",
+      "bytes": 123160260,
+      "mtime_ns": 1785672295071600813
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_10.png",
+      "bytes": 5240410,
+      "mtime_ns": 1785672422525088671
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_10.tif",
+      "bytes": 27237366,
+      "mtime_ns": 1785672421979351137
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_11.png",
+      "bytes": 1051137,
+      "mtime_ns": 1785672423517962387
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_11.tif",
+      "bytes": 9422076,
+      "mtime_ns": 1785672423400790039
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_12.png",
+      "bytes": 4926681,
+      "mtime_ns": 1785672428336642915
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_12.tif",
+      "bytes": 23448260,
+      "mtime_ns": 1785672427658142029
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_13.png",
+      "bytes": 812160,
+      "mtime_ns": 1785672429223318373
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_13.tif",
+      "bytes": 3641794,
+      "mtime_ns": 1785672429138444167
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_2.png",
+      "bytes": 16830761,
+      "mtime_ns": 1785672098676419643
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_2.tif",
+      "bytes": 95890236,
+      "mtime_ns": 1785672097149481936
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_3.png",
+      "bytes": 21225001,
+      "mtime_ns": 1785672456360553319
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_3.tif",
+      "bytes": 128024260,
+      "mtime_ns": 1785672453939946404
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_4.png",
+      "bytes": 26795149,
+      "mtime_ns": 1785672488427293246
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_4.tif",
+      "bytes": 128024260,
+      "mtime_ns": 1785672484563232663
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_5.png",
+      "bytes": 27543733,
+      "mtime_ns": 1785672519658607972
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_5.tif",
+      "bytes": 128024260,
+      "mtime_ns": 1785672516159867446
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_6.png",
+      "bytes": 6650975,
+      "mtime_ns": 1785672526040818056
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_6.tif",
+      "bytes": 32986508,
+      "mtime_ns": 1785672525513866542
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_7.png",
+      "bytes": 7662756,
+      "mtime_ns": 1785672654111549548
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_7.tif",
+      "bytes": 44345576,
+      "mtime_ns": 1785672653213749998
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_8.png",
+      "bytes": 26311780,
+      "mtime_ns": 1785672124122816733
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_8.tif",
+      "bytes": 128024260,
+      "mtime_ns": 1785672121069710749
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_9.png",
+      "bytes": 27866415,
+      "mtime_ns": 1785672682837682756
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/birmingham_block_9.tif",
+      "bytes": 128024260,
+      "mtime_ns": 1785672679529716989
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_10.png",
+      "bytes": 23754414,
+      "mtime_ns": 1785672711716860251
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_10.tif",
+      "bytes": 132410164,
+      "mtime_ns": 1785672710044691427
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_12.png",
+      "bytes": 24901607,
+      "mtime_ns": 1785672870390871386
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_12.tif",
+      "bytes": 120885124,
+      "mtime_ns": 1785672868157829098
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_13.png",
+      "bytes": 30861504,
+      "mtime_ns": 1785673040290241763
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_13.tif",
+      "bytes": 128088274,
+      "mtime_ns": 1785673037370092385
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_14.png",
+      "bytes": 32035180,
+      "mtime_ns": 1785673205386919779
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_14.tif",
+      "bytes": 128088274,
+      "mtime_ns": 1785673202719116038
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_15.png",
+      "bytes": 29411014,
+      "mtime_ns": 1785672164378987559
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_15.tif",
+      "bytes": 128088274,
+      "mtime_ns": 1785672161183679087
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_16.png",
+      "bytes": 31520180,
+      "mtime_ns": 1785672201572560867
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_16.tif",
+      "bytes": 128088274,
+      "mtime_ns": 1785672198951947715
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_17.png",
+      "bytes": 6261042,
+      "mtime_ns": 1785673212744041013
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_17.tif",
+      "bytes": 43859440,
+      "mtime_ns": 1785673212137008320
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_18.png",
+      "bytes": 8246765,
+      "mtime_ns": 1785673223644752774
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_18.tif",
+      "bytes": 58870964,
+      "mtime_ns": 1785673223040663068
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_19.png",
+      "bytes": 25971690,
+      "mtime_ns": 1785673376223031932
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_19.tif",
+      "bytes": 128088274,
+      "mtime_ns": 1785673372667109152
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_2.png",
+      "bytes": 26558027,
+      "mtime_ns": 1785673415304871628
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_2.tif",
+      "bytes": 128088274,
+      "mtime_ns": 1785673413537114152
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_20.png",
+      "bytes": 31071346,
+      "mtime_ns": 1785673578620272392
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_20.tif",
+      "bytes": 128088274,
+      "mtime_ns": 1785673576007918139
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_21.png",
+      "bytes": 30382648,
+      "mtime_ns": 1785673736078070178
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_21.tif",
+      "bytes": 128088274,
+      "mtime_ns": 1785673733332787741
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_22.png",
+      "bytes": 28198784,
+      "mtime_ns": 1785672231240646339
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_22.tif",
+      "bytes": 128088274,
+      "mtime_ns": 1785672229019464218
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_23.png",
+      "bytes": 2664611,
+      "mtime_ns": 1785673739023980057
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_23.tif",
+      "bytes": 22098146,
+      "mtime_ns": 1785673738762034465
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_25.png",
+      "bytes": 5749926,
+      "mtime_ns": 1785673746058655022
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_25.tif",
+      "bytes": 50013900,
+      "mtime_ns": 1785673745666919847
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_26.png",
+      "bytes": 25621268,
+      "mtime_ns": 1785673778353999259
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_26.tif",
+      "bytes": 128088274,
+      "mtime_ns": 1785673775910556784
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_27.png",
+      "bytes": 29716279,
+      "mtime_ns": 1785672266204889029
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_27.tif",
+      "bytes": 128088274,
+      "mtime_ns": 1785672263321607584
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_28.png",
+      "bytes": 15554797,
+      "mtime_ns": 1785673917786300177
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_28.tif",
+      "bytes": 101836794,
+      "mtime_ns": 1785673916442033022
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_3.png",
+      "bytes": 27772440,
+      "mtime_ns": 1785673954492353320
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_3.tif",
+      "bytes": 124567394,
+      "mtime_ns": 1785673952503482580
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_32.png",
+      "bytes": 903802,
+      "mtime_ns": 1785673955441393437
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_32.tif",
+      "bytes": 7775122,
+      "mtime_ns": 1785673955369639503
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_33.png",
+      "bytes": 8739305,
+      "mtime_ns": 1785674085839544705
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_33.tif",
+      "bytes": 48996506,
+      "mtime_ns": 1785674085050503355
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_4.png",
+      "bytes": 3480231,
+      "mtime_ns": 1785674089950472263
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_4.tif",
+      "bytes": 46395742,
+      "mtime_ns": 1785674089701792264
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_6.png",
+      "bytes": 27260680,
+      "mtime_ns": 1785674122077806183
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_6.tif",
+      "bytes": 128088274,
+      "mtime_ns": 1785674119939651234
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_7.png",
+      "bytes": 28780294,
+      "mtime_ns": 1785674290025720143
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_7.tif",
+      "bytes": 128088274,
+      "mtime_ns": 1785674287193184213
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_8.png",
+      "bytes": 29281135,
+      "mtime_ns": 1785674461637777028
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_8.tif",
+      "bytes": 128088274,
+      "mtime_ns": 1785674458223607636
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_9.png",
+      "bytes": 30502842,
+      "mtime_ns": 1785674628599782397
+    },
+    {
+      "path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data/rgbd/cambridge_block_9.tif",
+      "bytes": 128088274,
+      "mtime_ns": 1785674626001086675
+    }
+  ],
+  "config_path": "/home/ubuntu5/Workspace/hett-experiments/53-sbfnav-reproduction/configs/sbfnav/main.yaml",
+  "config_sha256": "600434ea7e451111f226b4cf23d204df7e56969d58c8e1d945558d34b98eea17",
+  "variant_args": [],
+  "config_overrides": [
+    "data.root=/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data"
+  ],
+  "resume_from": null
+}

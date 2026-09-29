@@ -1,0 +1,259 @@
+{
+  "paper_based_reimplementation": true,
+  "time": "2026-09-27T15:22:27+0800",
+  "split": "val_unseen",
+  "difficulty": null,
+  "data_version": "processed_citynav",
+  "seed": 0,
+  "checkpoint": "/home/ubuntu5/Workspace/hett-runs/sbfnav/main_e20_benchmark2d_resume_e5_s0_20260927/training/checkpoints/last.pt",
+  "checkpoint_sha256": "ba8b48217ed948380ee8939df89b9eaeb8352e79f1bc5f9d0acc3a493e645564",
+  "checkpoint_completed_epoch": 7,
+  "config": "/home/ubuntu5/Workspace/hett-runs/sbfnav/e7_fullval_s0_20260927/source/configs/sbfnav/main.yaml",
+  "config_sha256": "600434ea7e451111f226b4cf23d204df7e56969d58c8e1d945558d34b98eea17",
+  "config_overrides": [
+    "data.root=/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data"
+  ],
+  "effective_config_sha256": "0f2f86399f36fbd6e6e17efbbf38d6743379c83da5836f217dccd03148c37506",
+  "resolved_config": {
+    "experiment": {
+      "name": "sbfnav_main_revised",
+      "paper_based_reimplementation": true,
+      "seed": 0
+    },
+    "data": {
+      "root": "/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data",
+      "version": "processed_citynav",
+      "train_split": "train_seen",
+      "validation_splits": [
+        "val_seen",
+        "val_unseen"
+      ],
+      "allow_test_unseen": false,
+      "samples_per_episode": 4
+    },
+    "model": {
+      "input_channels": 9,
+      "canvas_size": 224,
+      "field_size": 28,
+      "hidden_dim": 256,
+      "attention_heads": 8,
+      "dropout": 0.1,
+      "use_cross_attention": true,
+      "pooled_text_only": false,
+      "gate_init": 0.0,
+      "siglip_name": "google/siglip-base-patch16-224",
+      "freeze_siglip": true,
+      "local_files_only": true
+    },
+    "state": {
+      "max_height_above_ground_m": 100.0,
+      "trajectory_radius_m": 2.0
+    },
+    "proposal": {
+      "mode": "field",
+      "top_k": 16,
+      "nms_kernel": 3,
+      "dedup_radius_m": 2.0,
+      "add_landmark_candidates": true
+    },
+    "selector": {
+      "selection_mode": "selector",
+      "crop_extent_m": 100.0,
+      "crop_size": 224,
+      "hidden_dim": 256,
+      "layers": 2,
+      "attention_heads": 8,
+      "dropout": 0.1,
+      "use_geometry": true,
+      "use_landmark_text": true,
+      "use_field_score": false,
+      "max_landmarks": 8
+    },
+    "loss": {
+      "field_weight": 1.0,
+      "gaussian_sigma_m": 20.0,
+      "list_temperature_m": 20.0,
+      "good_radius_m": 20.0,
+      "bad_radius_m": 40.0,
+      "score_margin": 1.0,
+      "rank_weight": 1.0,
+      "margin_weight": 0.2,
+      "hard_weight": 0.5,
+      "altitude_weight": 0.1,
+      "progress_weight": 0.1
+    },
+    "altitude": {
+      "min_above_ground_m": 10.0,
+      "max_above_ground_m": 100.0
+    },
+    "training": {
+      "epochs": 20,
+      "batch_size": 16,
+      "gradient_accumulation": 1,
+      "effective_batch_size": 16,
+      "optimizer": "adamw",
+      "learning_rate": 0.0001,
+      "weight_decay": 0.01,
+      "warmup_fraction": 0.05,
+      "scheduler": "cosine",
+      "precision": "bf16",
+      "gradient_clip_norm": 1.0,
+      "workers": 0,
+      "save_last": true,
+      "validate_every": 1,
+      "validation_max_episodes": 128,
+      "vision_batch_size": 128,
+      "vision_cache_entries": 2000000,
+      "text_precompute_batch_size": 256,
+      "select_checkpoint_by": [
+        "val_unseen_sr",
+        "val_unseen_spl",
+        "val_unseen_ne"
+      ]
+    },
+    "navigation": {
+      "horizon": 20,
+      "success_distance_m": 20.0,
+      "horizontal_step_m": 50.0,
+      "vertical_step_m": 10.0,
+      "stagnation_steps": 5,
+      "use_progress_for_stopping": false
+    },
+    "evaluation": {
+      "official_metric": "benchmark_2d",
+      "benchmark_dimensions": 2,
+      "diagnostic_dimensions": 3,
+      "batch_size": 1,
+      "candidate_thresholds_m": [
+        10.0,
+        20.0,
+        40.0
+      ],
+      "candidate_ks": [
+        1,
+        5,
+        16
+      ],
+      "difficulties": [
+        "easy",
+        "medium",
+        "hard"
+      ]
+    },
+    "_config_path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/e7_fullval_s0_20260927/source/configs/sbfnav/main.yaml"
+  },
+  "git_commit": "5be2330fff56c077ba6bf4391ed0d9a092ad4fb1",
+  "runtime": {
+    "python": "3.10.21",
+    "torch": "2.9.1+cu128",
+    "cuda": "12.8",
+    "transformers": "4.57.6",
+    "gpu": "NVIDIA GeForce RTX 5090"
+  },
+  "metric_protocol": {
+    "official": "benchmark_2d",
+    "benchmark_dimensions": 2,
+    "diagnostic_dimensions": 3
+  },
+  "benchmark_2d": {
+    "ne": 49.78991827844832,
+    "sr": 19.836855765665554,
+    "osr": 37.37486095661847,
+    "spl": 15.253259016201701,
+    "path_length": 285.640471201082,
+    "optimal_length": 207.71351060247264,
+    "progress": 69.58588202317655,
+    "episodes": 2697
+  },
+  "diagnostic_3d": {
+    "ne": 51.18013756751001,
+    "sr": 16.53689284390063,
+    "osr": 22.28401928068224,
+    "spl": 12.736560673813296,
+    "path_length": 319.9626679593504,
+    "optimal_length": 234.75019129924803,
+    "progress": 75.07770320482,
+    "episodes": 2697
+  },
+  "difficulty_breakdown": {
+    "easy": {
+      "benchmark_2d": {
+        "ne": 49.627009726832036,
+        "sr": 22.311827956989248,
+        "osr": 43.95161290322581,
+        "spl": 14.52427846892593,
+        "path_length": 189.25842412622376,
+        "optimal_length": 89.47890823405942,
+        "progress": 46.515313936082784,
+        "episodes": 744
+      },
+      "diagnostic_3d": {
+        "ne": 50.94680216894431,
+        "sr": 18.817204301075268,
+        "osr": 24.596774193548388,
+        "spl": 12.967798788100668,
+        "path_length": 233.92123610479422,
+        "optimal_length": 132.91097352578063,
+        "progress": 61.82425686407987,
+        "episodes": 744
+      }
+    },
+    "medium": {
+      "benchmark_2d": {
+        "ne": 50.02341046621722,
+        "sr": 17.367853290183387,
+        "osr": 35.92233009708738,
+        "spl": 13.491613904593247,
+        "path_length": 272.770240233177,
+        "optimal_length": 188.88086043189,
+        "progress": 72.6220653992321,
+        "episodes": 927
+      },
+      "diagnostic_3d": {
+        "ne": 51.352761291764416,
+        "sr": 14.347357065803667,
+        "osr": 18.338727076591155,
+        "spl": 10.74976786405236,
+        "path_length": 310.27888719964596,
+        "optimal_length": 214.9080118078456,
+        "progress": 75.80424471101476,
+        "episodes": 927
+      }
+    },
+    "hard": {
+      "benchmark_2d": {
+        "ne": 49.69708855558354,
+        "sr": 20.2729044834308,
+        "osr": 33.91812865497076,
+        "spl": 17.373538300445578,
+        "path_length": 367.159912849174,
+        "optimal_length": 310.46634770795947,
+        "progress": 83.57219846293708,
+        "episodes": 1026
+      },
+      "diagnostic_3d": {
+        "ne": 51.19337279572542,
+        "sr": 16.86159844054581,
+        "osr": 24.171539961013643,
+        "spl": 14.363963965839202,
+        "path_length": 391.10466607244575,
+        "optimal_length": 326.52609618422827,
+        "progress": 84.03195281619243,
+        "episodes": 1026
+      }
+    }
+  },
+  "final_candidate_oracle": {
+    "oracle_distance_m": 16.284777549474292,
+    "coverage@1_10m": 0.06711160548757879,
+    "coverage@1_20m": 0.20281794586577678,
+    "coverage@1_40m": 0.5009269558769003,
+    "coverage@5_10m": 0.17686318131256953,
+    "coverage@5_20m": 0.5231738969225065,
+    "coverage@5_40m": 0.7552836484983315,
+    "coverage@16_10m": 0.2899517982944012,
+    "coverage@16_20m": 0.8272154245457917,
+    "coverage@16_40m": 0.9362254356692622
+  },
+  "command": "/home/ubuntu5/Workspace/hett-runs/sbfnav/e7_fullval_s0_20260927/source/scripts/evaluate_sbfnav.py --config /home/ubuntu5/Workspace/hett-runs/sbfnav/e7_fullval_s0_20260927/source/configs/sbfnav/main.yaml --checkpoint /home/ubuntu5/Workspace/hett-runs/sbfnav/main_e20_benchmark2d_resume_e5_s0_20260927/training/checkpoints/last.pt --split val_unseen --output-dir /home/ubuntu5/Workspace/hett-runs/sbfnav/e7_fullval_s0_20260927/evaluation/val_unseen --override data.root=/home/ubuntu5/Workspace/hett-runs/sbfnav/recovered_inputs_20260927/data"
+}
