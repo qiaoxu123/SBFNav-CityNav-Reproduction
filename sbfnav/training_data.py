@@ -8,7 +8,7 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset
 
-from multiagent.mapdata import GROUND_LEVEL
+from sbfnav.mapdata import GROUND_LEVEL
 
 from .dataset import CityNavDataset, CityNavRecord
 from .field_targets import gaussian_field_target, progress_target
