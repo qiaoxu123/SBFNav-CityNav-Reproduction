@@ -9,7 +9,7 @@ from typing import Sequence
 import numpy as np
 import torch
 
-from multiagent.mapdata import GROUND_LEVEL
+from sbfnav.mapdata import GROUND_LEVEL
 
 from .candidate_proposal import Candidate, propose_candidates, propose_uniform_grid_candidates
 from .models.altitude_head import altitude_to_world
