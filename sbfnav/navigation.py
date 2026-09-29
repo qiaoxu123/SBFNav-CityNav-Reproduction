@@ -7,7 +7,7 @@ from typing import Callable, Mapping
 
 import numpy as np
 
-from multiagent.mapdata import GROUND_LEVEL
+from sbfnav.mapdata import GROUND_LEVEL
 
 from .dataset import CityNavRecord
 from .planning_state import PlanningState, PlanningStateBuilder
