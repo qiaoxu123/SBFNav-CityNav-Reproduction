@@ -1,0 +1,192 @@
+[
+  {
+    "file": "00_success_cambridge_block_10_597.png",
+    "outcome": "success",
+    "episode_id": [
+      "cambridge_block_10",
+      188,
+      1
+    ],
+    "metrics": {
+      "navigation_error": 2.3510154819220603,
+      "success": 1.0,
+      "oracle_success": 1.0,
+      "spl": 1.0,
+      "path_length": 274.952988255649,
+      "optimal_length": 275.4925093831158,
+      "progress": 0.9914661364579876
+    },
+    "termination": "stagnation"
+  },
+  {
+    "file": "01_success_cambridge_block_10_1916.png",
+    "outcome": "success",
+    "episode_id": [
+      "cambridge_block_10",
+      24,
+      4
+    ],
+    "metrics": {
+      "navigation_error": 3.9671302736888214,
+      "success": 1.0,
+      "oracle_success": 1.0,
+      "spl": 1.0,
+      "path_length": 219.47439107542652,
+      "optimal_length": 219.74862059587136,
+      "progress": 0.9819469616558615
+    },
+    "termination": "stagnation"
+  },
+  {
+    "file": "02_success_cambridge_block_10_1249.png",
+    "outcome": "success",
+    "episode_id": [
+      "cambridge_block_10",
+      85,
+      3
+    ],
+    "metrics": {
+      "navigation_error": 6.131534682009658,
+      "success": 1.0,
+      "oracle_success": 1.0,
+      "spl": 1.0,
+      "path_length": 396.37883840771804,
+      "optimal_length": 401.8076087108361,
+      "progress": 0.984740123011403
+    },
+    "termination": "stagnation"
+  },
+  {
+    "file": "03_success_cambridge_block_3_2303.png",
+    "outcome": "success",
+    "episode_id": [
+      "cambridge_block_3",
+      17,
+      1
+    ],
+    "metrics": {
+      "navigation_error": 6.288453236111301,
+      "success": 1.0,
+      "oracle_success": 1.0,
+      "spl": 1.0,
+      "path_length": 97.90878310186176,
+      "optimal_length": 102.52789914908888,
+      "progress": 0.9386659310460749
+    },
+    "termination": "stagnation"
+  },
+  {
+    "file": "04_success_cambridge_block_10_583.png",
+    "outcome": "success",
+    "episode_id": [
+      "cambridge_block_10",
+      185,
+      2
+    ],
+    "metrics": {
+      "navigation_error": 6.499560121896078,
+      "success": 1.0,
+      "oracle_success": 1.0,
+      "spl": 1.0,
+      "path_length": 363.1391056859069,
+      "optimal_length": 367.6229944547673,
+      "progress": 0.9823200392251421
+    },
+    "termination": "stagnation"
+  },
+  {
+    "file": "05_failure_birmingham_block_5_446.png",
+    "outcome": "failure",
+    "episode_id": [
+      "birmingham_block_5",
+      128,
+      1
+    ],
+    "metrics": {
+      "navigation_error": 451.429293392218,
+      "success": 0.0,
+      "oracle_success": 0.0,
+      "spl": 0.0,
+      "path_length": 379.0897920617507,
+      "optimal_length": 306.1145815111836,
+      "progress": 0.0
+    },
+    "termination": "stagnation"
+  },
+  {
+    "file": "06_failure_cambridge_block_2_952.png",
+    "outcome": "failure",
+    "episode_id": [
+      "cambridge_block_2",
+      474,
+      0
+    ],
+    "metrics": {
+      "navigation_error": 436.4079165237974,
+      "success": 0.0,
+      "oracle_success": 0.0,
+      "spl": 0.0,
+      "path_length": 176.3430017190286,
+      "optimal_length": 324.3484251884215,
+      "progress": 0.0
+    },
+    "termination": "stagnation"
+  },
+  {
+    "file": "07_failure_cambridge_block_2_925.png",
+    "outcome": "failure",
+    "episode_id": [
+      "cambridge_block_2",
+      129,
+      2
+    ],
+    "metrics": {
+      "navigation_error": 371.3290333400763,
+      "success": 0.0,
+      "oracle_success": 0.0,
+      "spl": 0.0,
+      "path_length": 153.45423436520798,
+      "optimal_length": 375.71309085191064,
+      "progress": 0.01166863124703399
+    },
+    "termination": "stagnation"
+  },
+  {
+    "file": "08_failure_cambridge_block_3_2207.png",
+    "outcome": "failure",
+    "episode_id": [
+      "cambridge_block_3",
+      165,
+      4
+    ],
+    "metrics": {
+      "navigation_error": 337.55885801141505,
+      "success": 0.0,
+      "oracle_success": 0.0,
+      "spl": 0.0,
+      "path_length": 458.87593954108036,
+      "optimal_length": 477.2703618910162,
+      "progress": 0.2927303160540775
+    },
+    "termination": "stagnation"
+  },
+  {
+    "file": "09_failure_birmingham_block_5_263.png",
+    "outcome": "failure",
+    "episode_id": [
+      "birmingham_block_5",
+      84,
+      3
+    ],
+    "metrics": {
+      "navigation_error": 331.4956691603592,
+      "success": 0.0,
+      "oracle_success": 0.0,
+      "spl": 0.0,
+      "path_length": 592.4751351776544,
+      "optimal_length": 292.6983081873261,
+      "progress": 0.0
+    },
+    "termination": "horizon"
+  }
+]
