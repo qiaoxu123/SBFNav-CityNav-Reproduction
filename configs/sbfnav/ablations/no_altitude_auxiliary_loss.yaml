@@ -1,0 +1,5 @@
+_base_: ../main.yaml
+experiment:
+  name: sbfnav_ablation_no_altitude_auxiliary_loss
+loss:
+  altitude_weight: 0.0

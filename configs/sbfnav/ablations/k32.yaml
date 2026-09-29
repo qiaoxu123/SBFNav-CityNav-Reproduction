@@ -1,0 +1,7 @@
+_base_: ../main.yaml
+experiment:
+  name: sbfnav_ablation_k32
+proposal:
+  top_k: 32
+evaluation:
+  candidate_ks: [1, 5, 16, 32]

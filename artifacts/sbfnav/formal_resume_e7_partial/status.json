@@ -1,0 +1,13 @@
+{
+  "time": "2026-09-27T16:55:26+0800",
+  "phase": "training",
+  "supervisor_pid": 3856964,
+  "child_pid": 3856978,
+  "exit_code": null,
+  "log_bytes": 8246,
+  "log_age_seconds": 0.7068190574645996,
+  "heartbeat_path": "/home/ubuntu5/Workspace/hett-runs/sbfnav/main_e20_benchmark2d_resume_e7_s0_20260927/training/train_steps.jsonl",
+  "disk_free_gib": 271.6216125488281,
+  "gpu": "94, 4638, 32607, 55, 335.49",
+  "alerts": []
+}

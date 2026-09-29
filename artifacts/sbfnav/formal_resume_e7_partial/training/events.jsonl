@@ -1,0 +1,3 @@
+{"time": "2026-09-27T15:28:52+0800", "event": "resumed", "checkpoint": "/home/ubuntu5/Workspace/hett-runs/sbfnav/main_e20_benchmark2d_resume_e5_s0_20260927/training/checkpoints/last.pt", "sha256": "ba8b48217ed948380ee8939df89b9eaeb8352e79f1bc5f9d0acc3a493e645564", "optimizer": true, "completed_epoch": 7, "global_step": 38290}
+{"time": "2026-09-27T15:29:03+0800", "event": "frozen_text_precomputed", "entries": 22041, "seconds": 11.287226915359497, "disabled_trainable": false}
+{"time": "2026-09-27T15:29:03+0800", "event": "training_started", "device": "NVIDIA GeForce RTX 5090", "records": 21878, "samples": 87512, "start_epoch": 7, "target_epochs": 20}
