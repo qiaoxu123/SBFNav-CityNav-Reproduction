@@ -237,9 +237,10 @@ Git at
 the per-split manifests bind every image to its episode and metrics.
 
 A repository copy of the reasonably sized epoch-7 audit material is indexed at
-`artifacts/sbfnav/README.md`. It includes the complete Val-Seen/Val-Unseen
-prediction JSONL files, candidate predictions, metrics, training/evaluation
-logs, provenance, checksums, and the 20 panels. Checkpoints, weights, caches,
+`artifacts/sbfnav/README.md`. It includes the Val-Seen/Val-Unseen metrics, training/evaluation logs,
+provenance, checksums, and the 20 panels. Five large raw per-episode prediction
+JSONL files were omitted when this standalone reproduction repository was
+created; they are not required to reproduce the reported aggregate metrics. Checkpoints, weights, caches,
 datasets, and source snapshots remain outside Git. The resumed formal-run copy
 is explicitly a point-in-time partial snapshot rather than a final result.
 
