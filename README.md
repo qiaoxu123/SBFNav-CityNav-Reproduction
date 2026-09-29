@@ -1,157 +1,198 @@
-# HETT
+# SBFNav 在 CityNav 上的复现
 
-## Introduction
+本仓库用于复现论文 **Map the Possibilities: Spatial Belief Fields for Language-Goal Aerial Navigation** 中的 SBFNav。  
+这是一个**基于论文描述的独立复现版本**，不是论文作者发布的官方实现。
 
-The official repository for AAAI 2026 oral paper [History-Enhanced Two-Stage Transformer for Aerial Vision-and-Language Navigation](https://arxiv.org/abs/2512.14222).
+## 论文与数据集
 
-Aerial Vision-and-Language Navigation (AVLN) requires Unmanned Aerial Vehicle (UAV) agents to localize targets in large-scale urban environments based on linguistic instructions. While successful navigation demands both global environmental reasoning and local scene comprehension, existing UAV agents typically adopt mono-granularity frameworks that struggle to balance these two aspects. To address this limitation, this work proposes a History-Enhanced Two-Stage Transformer (HETT) framework, which integrates the two aspects through a coarse-to-fine navigation pipeline. Specifically, HETT first predicts coarse-grained target positions by fusing spatial landmarks and historical context, then refines actions via fine-grained visual analysis. In addition, a historical grid map is designed to dynamically aggregate visual features into a structured spatial memory, enhancing comprehensive scene awareness. Additionally, the CityNav dataset annotations are manually refined to enhance data quality. Experiments on the refined CityNav dataset show that HETT delivers significant performance gains, while extensive ablation studies further verify the effectiveness of each component.
+- SBFNav 论文（arXiv）：https://arxiv.org/abs/2609.05841
+- SBFNav PDF：https://arxiv.org/pdf/2609.05841
+- CityNav 项目主页：https://water-cookie.github.io/city-nav-proj/
+- CityNav 论文：https://openaccess.thecvf.com/content/ICCV2025/html/Lee_CityNav_A_Large-Scale_Dataset_for_Real-World_Aerial_Navigation_ICCV_2025_paper.html
 
+本复现使用 **Revised CityNav** 设置，并按照 CityNav/HETT 已发布评估代码采用二维平面距离作为主要 benchmark 指标（`benchmark_2d`）。仓库同时保留 3D 距离诊断结果，但不用于与论文表格直接比较。
 
+## 当前复现结果
 
-Project Page:[HETT](https://crotonyl.github.io/HETT.git.io/)
+当前公开结果对应 **Epoch 7** checkpoint，在完整 Val-Seen 和 Val-Unseen split 上重新评估。
 
+- Val-Seen：2,470 个 episode
+- Val-Unseen：2,697 个 episode
+- Seed：0
+- GPU：NVIDIA GeForce RTX 5090
+- Python：3.10.21
+- PyTorch：2.9.1+cu128
+- Transformers：4.57.6
+- Epoch-7 checkpoint SHA-256：`ba8b48217ed948380ee8939df89b9eaeb8352e79f1bc5f9d0acc3a493e645564`
 
+### 与论文 Revised SBFNav 的对比
 
-## Setup
+| Split | 结果 | NE ↓ | SR ↑ | OSR ↑ | SPL ↑ |
+|---|---|---:|---:|---:|---:|
+| Val-Seen | 论文 | 32.50 | 43.24% | 53.77% | 40.93% |
+| Val-Seen | 本复现 Epoch 7 | 34.00 | 40.61% | 58.34% | 34.06% |
+| Val-Unseen | 论文 | 49.20 | 20.24% | 35.41% | 19.15% |
+| Val-Unseen | 本复现 Epoch 7 | 49.79 | 19.84% | 37.37% | 15.25% |
 
-This code was developed with Python 3.10, PyTorch 2.2.2, and CUDA 11.3 on Ubuntu 22.04.
+对应差值（本复现 - 论文）：
 
-To set up the environment, create the conda environment and install PyTorch.
+| Split | ΔNE | ΔSR | ΔOSR | ΔSPL |
+|---|---:|---:|---:|---:|
+| Val-Seen | +1.50 m | -2.63 pp | +4.57 pp | -6.87 pp |
+| Val-Unseen | +0.59 m | -0.40 pp | +1.96 pp | -3.90 pp |
 
-```bash
-conda create -n hett python=3.10 &&
-conda activate hett &&
-conda install pytorch torchvision pytorch-cuda=11.3 -c pytorch -c nvidia
+从当前结果看，**Val-Unseen 的 NE 和 SR 已与论文非常接近**；OSR 略高，而 SPL 仍存在明显差距，说明当前策略能够较好地接近目标区域，但闭环轨迹效率仍弱于论文报告结果。
+
+> 论文 Revised SBFNav 还报告了 Test-Unseen 结果，但本仓库当前不把 Test-Unseen 作为开发阶段调参依据，也不在这里混用未冻结的测试结果。
+
+## 仓库内容
+
+本仓库已经清理掉原工程中与 SBFNav 复现无关的 HETT、VLNCE、GSAM-LLaVA 等代码，仅保留 SBFNav 复现所需内容：
+
+```text
+.
+├── sbfnav/                  # SBFNav 核心实现
+├── configs/sbfnav/          # 主配置与消融配置
+├── scripts/                 # 训练、评估、候选分析、可视化和监督运行脚本
+├── tests/                   # SBFNav 单元测试
+├── docs/                    # 复现假设、实现说明和完整实验记录
+├── artifacts/sbfnav/        # Epoch 1-7 训练日志、评估日志、指标和可视化
+├── requirements.txt
+└── README.md
 ```
 
-Install the dependencies for HETT.
+其中最重要的记录包括：
+
+- `docs/sbfnav_reproduction.md`：论文到代码的实现对应关系，以及论文未公开细节的复现假设；
+- `docs/sbfnav_assumptions.md`：所有未由论文明确给出的超参数与实现选择；
+- `docs/sbfnav_results.md`：从数据检查、smoke test、NMS 修复到 Epoch 7 完整验证的全过程；
+- `artifacts/sbfnav/formal_epochs_1_5/`：Epoch 1-5 正式训练日志；
+- `artifacts/sbfnav/formal_epochs_6_7/`：Epoch 6-7 正式训练日志；
+- `artifacts/sbfnav/epoch7_full_validation/`：完整 Val-Seen / Val-Unseen 指标与评估日志；
+- `artifacts/sbfnav/epoch7_candidate_analysis/`：候选点覆盖率与 selector 分析；
+- `artifacts/sbfnav/epoch7_case_visualizations/`：成功/失败案例可视化。
+
+为了保持独立仓库体积可控，5 个体积较大的逐 episode prediction JSONL 没有迁入；对应的最终指标、训练/评估日志、provenance、配置和可视化均已保留。
+
+## 方法概览
+
+复现实现遵循论文公开的核心流程：
+
+1. 将历史观测构造成世界坐标对齐的 9 通道 planning state；
+2. 使用语言条件化的 **Spatial Belief Field (SBF)** 预测目标位置分布；
+3. 从 belief field 中通过 NMS 产生候选位置；
+4. 使用局部视觉、完整指令、地标文本和几何关系对候选点重新排序；
+5. 预测高度，并通过 receding-horizon 闭环方式执行导航；
+6. 每一步重新利用新观测更新 spatial belief 和候选决策。
+
+论文没有公开完整 Supplement 中的若干训练/控制参数，因此本复现将这些选择全部显式写入 YAML，并在 `docs/sbfnav_assumptions.md` 中记录。
+
+## 环境
+
+正式复现实验使用：
+
+```text
+Python 3.10.21
+PyTorch 2.9.1+cu128
+CUDA 12.8
+Transformers 4.57.6
+NVIDIA GeForce RTX 5090
+```
+
+建议先根据本机 CUDA 安装合适的 PyTorch，然后安装其余依赖：
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Data Preparation
+SigLIP 主配置使用：
 
-Follow the instruction in [CityNav](https://github.com/water-cookie/citynav) for data download.
-
-Download the refined dataset and corresponding checkpoints:
-
-https://www.dropbox.com/scl/fo/ua3kn6mw3adn2hcsdikt3/AEdoRoo-OeXnbrpeOpk4BcQ?rlkey=v5rlqiqa1k9ml8isinpv7glgk&st=ahseq0r2&dl=0
-
-## Usage
-
-```bash
-cd multiagent
-# train
-./train.sh
-# eval
-./eval.sh
+```text
+google/siglip-base-patch16-224
 ```
 
-## SBFNav paper-based reimplementation
+主实验默认离线加载已缓存的模型权重，因此首次运行前需要提前准备 Hugging Face 模型缓存。
 
-`sbfnav/` is an independent, paper-based reimplementation of “Map the
-Possibilities: Spatial Belief Fields for Language-Goal Aerial Navigation”
-(arXiv:2609.05841). It is not official SBFNav code. The paper specification,
-missing-detail assumptions, and live results are in
-`docs/sbfnav_reproduction.md`, `docs/sbfnav_assumptions.md`, and
-`docs/sbfnav_results.md`. Tracked epoch-7 training logs, complete validation
-prediction JSONL files, candidate-analysis outputs, provenance, and case
-visualizations are indexed in `artifacts/sbfnav/README.md`; checkpoints,
-weights, caches, and datasets remain external.
+## 数据准备
 
-Use the dedicated environment and supervised launcher for GPU work:
+下载 CityNav 数据：
 
 ```bash
-/home/ubuntu5/miniconda3/envs/SBFNav/bin/python scripts/supervise_experiment.py \
-  --run-dir /home/ubuntu5/Workspace/hett-runs/sbfnav/<run-name> \
-  --python /home/ubuntu5/miniconda3/envs/SBFNav/bin/python \
-  --config configs/sbfnav/main.yaml --phase train-eval \
-  --config-override data.root=/path/to/audited/data
+bash scripts/download_data.sh
 ```
 
-Resume model, optimizer, scheduler, and RNG state by adding
-`--resume-from /path/to/last.pt --resume-optimizer`. The supervisor takes the
-single-GPU advisory lock, snapshots source/configuration, hashes annotations,
-and records commands, PIDs, logs, telemetry, package versions and GPU details.
-Per-epoch Val-Seen/Val-Unseen proxy metrics select `best_val_unseen.pt` by the
-released CityNav benchmark's horizontal (`Pose.xy`) SR, SPL, then NE. A
-separately labelled 3-D Euclidean diagnostic is also recorded but is never
-used for checkpoint selection. Run full validation on that frozen checkpoint
-with:
+也可以直接使用已有数据目录，并在运行时覆盖 `data.root`：
 
 ```bash
-/home/ubuntu5/miniconda3/envs/SBFNav/bin/python scripts/evaluate_sbfnav.py \
-  --config configs/sbfnav/main.yaml --checkpoint /path/to/best_val_unseen.pt \
-  --split val_unseen --output-dir /path/to/new-output
+--override data.root=/path/to/citynav/data
 ```
 
-Candidate coverage can be audited with `scripts/analyze_sbf_candidates.py`.
+数据目录至少需要包含：
 
-To diagnose the large OSR-to-SR gap or low-SPL successes, rerun a development
-split with per-step diagnostics enabled and then classify the trajectories:
+```text
+cityrefer/
+processed_citynav/
+rgbd/
+```
+
+## 训练
+
+直接运行主配置：
 
 ```bash
-/home/ubuntu5/miniconda3/envs/SBFNav/bin/python scripts/evaluate_sbfnav.py \
+python scripts/train_sbfnav.py \
+  --config configs/sbfnav/main.yaml \
+  --output-dir runs/sbfnav_main \
+  --override data.root=/path/to/citynav/data
+```
+
+为了同时保存运行 provenance、GPU 状态、配置快照和日志，推荐使用监督脚本：
+
+```bash
+python scripts/supervise_experiment.py \
+  --run-dir runs/sbfnav_main \
+  --python "$(which python)" \
+  --config configs/sbfnav/main.yaml \
+  --phase train-eval \
+  --config-override data.root=/path/to/citynav/data
+```
+
+## 评估
+
+```bash
+python scripts/evaluate_sbfnav.py \
   --config configs/sbfnav/main.yaml \
   --checkpoint /path/to/checkpoint.pt \
   --split val_unseen \
-  --output-dir /path/to/val_unseen_stepdiag \
-  --record-step-diagnostics \
-  --override data.root=/path/to/audited/data
-
-/home/ubuntu5/miniconda3/envs/SBFNav/bin/python scripts/analyze_sbf_closed_loop.py \
-  --predictions /path/to/val_unseen_stepdiag/predictions.jsonl \
-  --output-dir /path/to/val_unseen_closed_loop_audit
+  --output-dir runs/eval_val_unseen \
+  --override data.root=/path/to/citynav/data
 ```
 
-The audit separates high/low-SPL final successes, episodes that entered the
-20 m success region but later finished outside it, and episodes that never
-reached the goal region. When step diagnostics are present it also measures
-candidate switching and selector-score margins. This is analysis-only and does
-not change navigation, stopping, or benchmark metrics.
-For a full-split GPU audit, keep it under the same lock/provenance supervisor:
+候选点覆盖率分析：
 
 ```bash
-/home/ubuntu5/miniconda3/envs/SBFNav/bin/python scripts/supervise_experiment.py \
-  --run-dir /home/ubuntu5/Workspace/hett-runs/sbfnav/<candidate-run> \
-  --python /home/ubuntu5/miniconda3/envs/SBFNav/bin/python \
-  --config configs/sbfnav/main.yaml --phase candidate-analysis \
+python scripts/analyze_sbf_candidates.py \
+  --config configs/sbfnav/main.yaml \
   --checkpoint /path/to/checkpoint.pt \
-  --evaluation-split val_seen --evaluation-split val_unseen \
-  --analysis-prefix-fraction 0.5 --config-override data.root=/path/to/audited/data
+  --split val_unseen \
+  --output-dir runs/candidate_analysis \
+  --prefix-fraction 0.5 \
+  --override data.root=/path/to/citynav/data
 ```
 
-The configurations under `configs/sbfnav/ablations/` inherit the main config
-and implement the requested architecture/loss/K controls. Test-Unseen is
-sealed by default. After full Val-Seen and Val-Unseen evaluation, create its
-manifest with `scripts/freeze_sbfnav_test.py`; this binds the raw and effective
-configuration (including overrides), checkpoint, validation metrics, seed and
-single-use sentinel. Run the final evaluation through the supervisor with
-`--phase eval --evaluation-split test_unseen --allow-test-unseen
---freeze-manifest <manifest>`. The evaluator rejects any hash/override mismatch
-and atomically consumes the sentinel before reading Test-Unseen episodes.
-That single full-split process also verifies the easy/medium/hard annotation
-partition and emits all three difficulty rows; truncated or difficulty-only
-Test-Unseen commands are rejected.
+## 测试
 
-## Citation
-
-```bibtex
-@misc{ding2025historyenhancedtwostagetransformeraerial,
-      title={History-Enhanced Two-Stage Transformer for Aerial Vision-and-Language Navigation}, 
-      author={Xichen Ding and Jianzhe Gao and Cong Pan and Wenguan Wang and Jie Qin},
-      year={2025},
-      eprint={2512.14222},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2512.14222}, 
-}
+```bash
+python -m pytest tests/test_sbf_*.py
 ```
 
-## Acknowledgements
+## 关于复现边界
 
-We would like to express our gratitude to the authors of the following codebase.
+论文公开版本未给出完整的 epoch、batch size、优化器参数、学习率调度、部分 loss 超参数、controller 细节等信息。因此，本仓库的目标是：
 
-- [CityNav](https://github.com/water-cookie/citynav)
-- [AVDN](https://github.com/eric-ai-lab/Aerial-Vision-and-Dialog-Navigation)
+- 严格实现论文明确公开的结构与约束；
+- 对未公开细节给出可审计、可复现的明确假设；
+- 保留训练日志、评估日志、配置、哈希和失败案例；
+- 不把该实现描述为作者官方代码，也不把尚未达到的指标表述为完全复现。
+
+详细过程请查看 `docs/sbfnav_results.md`。
